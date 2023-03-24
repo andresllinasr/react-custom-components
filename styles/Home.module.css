@@ -205,8 +205,9 @@
 
   .description {
     font-size: 0.8rem;
+    display:none;
   }
-
+ /*
   .description a {
     padding: 1rem;
   }
@@ -247,7 +248,7 @@
       rgb(var(--background-end-rgb)) 40%
     );
     z-index: 1;
-  }
+  } */
 }
 
 /* Tablet and Smaller Desktop */
@@ -258,6 +259,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
+
   .vercelLogo {
     filter: invert(1);
   }

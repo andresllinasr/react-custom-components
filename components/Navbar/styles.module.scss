@@ -1,0 +1,67 @@
+.navbar{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background-color: #333;
+    padding: 1rem 3rem;
+    display: flex;
+    justify-content: space-between;
+
+    // > *{
+    //     border: 1px solid red;
+    // }
+
+    &__logo{
+        background-color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 10rem;
+        min-height: 2rem;
+    }
+
+    &__menu{
+        border: 1px solid white;
+        min-width: 50%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+        list-style: none;
+    }
+
+    // make a breakpoint for mobile
+    @media (max-width: 700px){
+        flex-direction: column;
+        padding: 1rem 1rem;
+        align-items: center;
+        transition: ease-in-out;
+
+        &__logo{
+            margin-bottom: 1rem;
+        }
+
+        &__menu{
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+
+            // This only selects the li for the menu buttons, not the actual custom button
+            & > *{
+
+                // TODO CHANGE for the menu buttons
+                & > *{
+                margin: 1rem 0;
+                border: 1px solid red;
+                width: 100%;
+                }
+
+                // TODO CHANGE for the theme btn
+                margin: 1rem 0;
+                border: 1px solid red;
+                width: 100%;
+            }
+        }
+    }
+}
+
