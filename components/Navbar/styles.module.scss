@@ -7,58 +7,83 @@
     display: flex;
     justify-content: space-between;
 
-    // > *{
-    //     border: 1px solid red;
-    // }
-
     &__logo{
-        background-color: white;
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: space-around;
         min-width: 10rem;
         min-height: 2rem;
+        
+        >img{
+            max-height: 2rem;
+            // color: white;
+            // border: 1px solid white;
+            // padding: .5rem;
+            // border-radius: 5px;
+        }
+
+        button{
+            display: none;
+        }
     }
 
     &__menu{
-        border: 1px solid white;
         min-width: 50%;
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: space-evenly;
         list-style: none;
+         
+        &-item{
+            padding: .5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all .2s ease-in;
+            white-space: nowrap;
+            border: none;
+
+            &:hover{
+                background-color: #aaa;
+            }
+        }
     }
 
-    // make a breakpoint for mobile
     @media (max-width: 700px){
         flex-direction: column;
         padding: 1rem 1rem;
         align-items: center;
-        transition: ease-in-out;
+        transition: ease-in-out 1s;
 
         &__logo{
-            margin-bottom: 1rem;
+            width: 100%;
+
+            button{
+                display: block;
+                padding: .5rem 1rem;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: all .2s ease-in;
+                white-space: nowrap;
+                border:none
+            }
         }
 
         &__menu{
-            flex-direction: column;
             align-items: center;
-            width: 100%;
-
-            // This only selects the li for the menu buttons, not the actual custom button
-            & > *{
-
-                // TODO CHANGE for the menu buttons
-                & > *{
-                margin: 1rem 0;
-                border: 1px solid red;
+            margin-top: 1rem;
+            display: flex;
+            flex-direction: column;
+            display:none;
+            
+            &--expanded{
                 width: 100%;
-                }
-
-                // TODO CHANGE for the theme btn
-                margin: 1rem 0;
-                border: 1px solid red;
+                max-width: 300px;
+                margin-top: 2rem;
+            }
+            
+            &-item{
+                margin: .5rem 0;
                 width: 100%;
             }
         }

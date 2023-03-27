@@ -59,12 +59,12 @@ export default function Home() {
             />
           </div>
         </div>
-          <Navbar buttons={[
+          <Navbar items={[
                     {msg: 'Button 1'},
                     {msg: 'Button 2'},
                     {msg: 'Button 3'},
                 ]}
-                logo= 'Logo goes here'
+                logo={{src:'https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Source_engine_logo_and_wordmark.svg/1200px-Source_engine_logo_and_wordmark.svg.png'}}
                 />
 
         <div className={styles.grid}>

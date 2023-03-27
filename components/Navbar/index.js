@@ -1,39 +1,42 @@
 import React, { useState, useEffect } from 'react'
 import styles from './styles.module.scss'
-import CustomButton from '../CustomButton'
 
-
-function Navbar({buttons, logo}) {
+function Navbar({items, logo}) {
 
     console.log("Component rendered")
 
-    const [theme, setTheme] = useState('light');
+    const [expanded, setExpanded] = useState(false);
+    
 
+    // TODO extract breakpoints to a separate file
+    const handleResize = () => {
+        if(window.innerWidth > 700){
+            setExpanded(false)
+        }
+    }
+    
     useEffect(() => {
-            console.log('Navbar mounted')
+        window.addEventListener('resize', handleResize)
+        console.log('Navbar mounted')
         return () => {
+            window.removeEventListener('resize', handleResize)
             console.log('Navbar unmounted')
         }
     }, [])
 
-    const handleClick = () => setTheme(theme === 'light' ? 'dark' : 'light')
-
-
-  return (
-    <nav className={styles.navbar}>
-        <div className={styles['navbar__logo']}>
-            {logo}
-        </div>
-        <div className={styles['navbar__menu']}>
-                {buttons.map((item, index) => (
-                    <li className={styles['navbar__menu-item']} key={index}>
-                        <CustomButton msg={item.msg}/>
-                    </li>
+    return (
+        <nav className={styles.navbar}>
+            <div className={styles['navbar__logo']}>
+                <img src={logo.src} alt="Logo goes here" />   
+                <button aria-expanded={expanded} onClick={() => setExpanded(!expanded)}>O</button>
+            </div>
+            <div className={`${styles[expanded ? "navbar__menu--expanded" : 'navbar__menu']}`}>
+                {items.map((item, index) => (
+                    <button className={styles['navbar__menu-item']} key={index}>{item.msg}</button>
                 ))}
-            <CustomButton onClick={handleClick} msg={"Count: " + theme}/>
-        </div>
-    </nav>
-  )
+            </div>
+        </nav>
+    )
 }
 
 export default Navbar
